@@ -1,45 +1,68 @@
-# 🏟️ Kaggle Playground Collection
+# 🎧 Kaggle Playground S5E4 - Podcast Listening Time Prediction
 
-Welcome to my Kaggle Playground repository!  
-This repository contains my solutions and explorations for various **Kaggle Playground** competitions.
+This project is part of the Kaggle Playground Series - Season 5, Episode 4.  
+The goal is to predict **podcast listening time (in minutes)** based on episode metadata, genre, sentiment, and other features.
+The evaluation metric is **Root Mean Squared Error (RMSE)**.
 
----
+## 📦 Dataset
 
-## 📌 What is Kaggle Playground?
+The dataset can be downloaded from the official competition page:
 
-Kaggle Playground is a monthly competition hosted by Kaggle designed to help users practice and improve their machine learning skills. Each playground presents a new dataset and challenge — from regression problems to classification tasks, and etc. Allowing participants to explore, learn, and grow.
-
----
-
-## 📂 Repository Structure
-
-Each folder in this repository corresponds to a different Playground Series, containing:
-- 📊 Exploratory Data Analysis (EDA)
-- 🧠 Model Building
-- 📁 Submission files
-- 📄 Notes and experiments
+```bash
+kaggle competitions download -c playground-series-s5e4
+```
 
 ---
 
-## 🚀 Why I Join?
+## 📊 Exploratory Data Analysis (EDA)
 
-Every playground helps me:
-- Gain new insights on feature engineering
-- Improve my model-building skills
-- Try out different machine learning techniques
-- Learn from the Kaggle community
+Several visualizations were used to understand patterns in listening behavior:
+- Distribution of listening time by genre
+- Boxplots by sentiment and genre
+- ANOVA test to assess statistical significance of sentiment on listening time
+- Analysis of listening time by day of the week
 
-Feel free to browse around, clone, or contribute! All code here is open source.
-
----
-
-## 🙌 Let's Connect
-
-If you find something interesting or helpful, feel free to ⭐️ the repo or open an issue to discuss.  
-Happy Learning & Coding!
+**Key Insights:**
+- Listening time varies significantly across genres and sentiment (p-value < 0.05).
+- Weekdays tend to have longer listening time than weekends.
 
 ---
 
-**Thank you!**  
-```Enjoy the playgrounds and keep experimenting. 🧪```
+## 🧠 Modeling
 
+Two baseline models were used for regression:
+
+### ✅ LightGBM
+- Model: `LGBMRegressor`
+- RMSE: **13.75**
+
+### ✅ Random Forest
+- Model: `RandomForestRegressor`
+- RMSE: **13.36** (best so far)
+
+---
+
+## 📁 Folder Structure
+
+```
+├── dataset/            # Dataset files
+├── code.ipynb          # Jupyter notebooks for EDA and modeling
+├── submissions/        # Submission CSVs
+├── README.md           # Project overview
+```
+
+---
+
+## 🏁 Submission
+
+The predictions are submitted as `.csv` with format:
+```
+id, listening_time
+```
+
+---
+
+## ✨ Author
+
+Created by walker
+For Kaggle Playground Series S5E4  
